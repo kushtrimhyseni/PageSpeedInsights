@@ -13,7 +13,7 @@ export const PageSpeedInsightsContextProvider = ({ children }) => {
     );
     const data = await response.json();
     setLoading(false);
-    setSiteData(data.lighthouseResult.audits);
+    setSiteData(data.lighthouseResult);
   }, []);
 
   return (
