@@ -25,7 +25,7 @@ const SitesData = () => {
     );
   } else {
     return (
-      <div className="flex flex-col justify-start items-center mx-auto max-w-[960px] mt-4">
+      <div className="flex flex-col justify-start mx-auto max-w-[960px] mt-4">
         <div className="flex">
           <img src={iconlab} alt="" className="w-6 h-8" />
           <h2 className="ml-4 font-bold text-md">
