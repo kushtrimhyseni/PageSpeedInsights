@@ -1,16 +1,17 @@
-import Header from "./components/Header";
 import { PageSpeedInsightsContextProvider } from "./context/PageSpeedInsightsContext";
-import Input from "./components/Input";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SitesData from "./pages/SitesData";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <PageSpeedInsightsContextProvider>
-      <div className="flex flex-col">
-        <Header />
-        <main className="mt-28">
-          <Input />
-        </main>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/report" element={<SitesData />}></Route>
+        </Routes>
+      </Router>
     </PageSpeedInsightsContextProvider>
   );
 }
