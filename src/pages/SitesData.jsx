@@ -1,8 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import PageSpeedInsightsContext from "../context/PageSpeedInsightsContext";
-import Header from "../components/Header";
-import Input from "../components/Input";
 import Spinner from "../components/Spinner";
 
 const SitesData = () => {
@@ -18,15 +16,15 @@ const SitesData = () => {
     }
   }, [url, checkPageSpeed]);
 
-  return (
-    <div className="flex flex-col">
-      <Header />
-      <main className="mt-28">
-        <Input />
-      </main>
-      {loading && <Spinner />}
-    </div>
-  );
+  if (!loading) {
+    return <div>{loading && <Spinner />}</div>;
+  } else {
+    return (
+      <div>
+        <h2>Data fetched</h2>
+      </div>
+    );
+  }
 };
 
 export default SitesData;
