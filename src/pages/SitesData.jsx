@@ -16,7 +16,7 @@ const SitesData = () => {
     }
   }, [url, checkPageSpeed]);
 
-  if (!loading) {
+  if (loading) {
     return <div>{loading && <Spinner />}</div>;
   } else {
     return (
