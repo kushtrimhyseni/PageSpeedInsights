@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const MetricsData = ({
   displayValue,
   metricTested,
@@ -7,31 +5,23 @@ const MetricsData = ({
   score,
   showMetricsDescription = false,
 }) => {
-  // const [classes, setClasses] = useState("");
+  const classes =
+    score < 0.49 ? "triangle" : score > 0.9 ? "square" : "forsquare";
 
-  const getClasses = () => {
-    if(score < 0.49) {
-      return "triangle"
-    }
-
-    if(score < 0.9) {
-      return "square"
-    }
-
-    return "forsquare";
-  }
-
-  const classes = score < 0.49 ? 'triangle' : score < 0.9 ? 'square' : 'forsquare';
-  
+  console.log(score, classes);
   return (
     <div className="flex flex-col max-w-screen-md mx-auto justify-start items-start mt-8 w-full border-b border-[#d8d8d8]">
       <div className="flex justify-start items-center">
-        <span className={`${classes} w-3 h-3`}>{score}</span>
+        <span className={`${classes} w-3 h-3`}></span>
         <span className="ml-4 text-[#212121] text-base">{metricTested}</span>
       </div>
       <span
         className={`text-2xl ml-[27px] text-center ${
-          displayValue > 2.5 ? "text-[#c33300]" : "text-[#008800]"
+          score < 0.49
+            ? "text-[#cc0000]"
+            : score > 0.9
+            ? "text-[#008800]"
+            : "text-[#c33300]"
         }`}
       >
         {displayValue}

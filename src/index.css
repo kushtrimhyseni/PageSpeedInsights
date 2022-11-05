@@ -2,32 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.triangle {
-  position: relative;
+@layer base {
+  * {
+    @apply font-roboto;
+  }
 }
-.triangle::before {
-  content: "\25B2";
-  color: #ff3e43;
-  position: absolute;
-  top: -7px;
+
+.triangle {
+  @apply relative before:content-['🔺'] before:absolute before:top-[-7px];
 }
 
 .forsquare {
-  position: relative;
-}
-.forsquare::before {
-  content: "\25B2";
-  color: #ff3e43;
-  position: absolute;
-  top: -7px;
+  @apply relative before:content-['🟨'] before:absolute before:top-[-7px];
 }
 
 .square {
-  position: relative;
+  @apply relative before:content-['🟢'] before:absolute before:top-[-7px];
 }
-.square::before {
-  content: "\25B2";
-  color: #ff3e43;
-  position: absolute;
-  top: -7px;
-}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap");
