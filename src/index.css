@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.triangle {
+  position: relative;
+}
+.triangle::before {
+  content: "\25B2";
+  color: #ff3e43;
+  position: absolute;
+  top: -7px;
+}
+
+.forsqure {
+  position: relative;
+}
+.forsqure::before {
+  content: "\25B2";
+  color: #ff3e43;
+  position: absolute;
+  top: -7px;
+}
+
+.square {
+  position: relative;
+}
+.square::before {
+  content: "\25B2";
+  color: #ff3e43;
+  position: absolute;
+  top: -7px;
+}

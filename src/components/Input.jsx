@@ -1,4 +1,4 @@
-import { useState, useContext, useRef } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import PageSpeedInsightsContext from "../context/PageSpeedInsightsContext";
 
@@ -6,7 +6,7 @@ const Input = () => {
   const [, setClear] = useState({});
   const [input, setInput] = useState("");
   const { siteData } = useContext(PageSpeedInsightsContext);
-  const clearInput = useRef();
+  // const clearInput = useRef();
   const navigate = useNavigate();
 
   const inputHandler = (evt) => {
@@ -25,7 +25,7 @@ const Input = () => {
       <div className="flex justify-center items-center">
         <input
           type="text"
-          ref={clearInput}
+          // ref={clearInput}
           onKeyUp={inputHandler}
           className="border-2 border-[##3c4043] w-full h-12 focus:outline-none"
         />
