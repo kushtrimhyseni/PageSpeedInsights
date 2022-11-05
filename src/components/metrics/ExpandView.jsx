@@ -1,6 +1,6 @@
-const ExpandView = () => {
+const ExpandView = ({onClick}) => {
   return (
-    <div className="text=[#616161] text-sm cursor-pointer">Expand view</div>
+    <div className="text=[#616161] text-sm cursor-pointer" onClick={onClick}>Expand view</div>
   );
 };
 

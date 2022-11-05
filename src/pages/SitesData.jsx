@@ -8,7 +8,7 @@ import MetricHeader from "../components/metrics/MetricHeader";
 import ExpandView from "../components/metrics/ExpandView";
 
 const SitesData = () => {
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const { checkPageSpeed, siteData, loading } = useContext(
     PageSpeedInsightsContext
   );
@@ -45,9 +45,9 @@ const SitesData = () => {
           </h2>
           <div className="flex justify-between items-center border-b border-[#d8d8d8]">
             <MetricHeader />
-            <ExpandView onClick={() => setHidden(true)} />
+            <ExpandView onClick={() => setHidden(!hidden)} />
           </div>
-          {siteData && (
+          {siteData.audits && (
             <div className="grid grid-cols-1 md:grid-cols-2">
               <MetricsData
                 metricTested={siteData?.audits["first-contentful-paint"]?.title}
@@ -67,6 +67,7 @@ const SitesData = () => {
                   siteData?.audits["interactive"]?.description.split(".")[0] +
                   "."
                 }
+                showMetricsDescription={!hidden}
               />
               <MetricsData
                 metricTested={siteData?.audits["speed-index"]?.title}
@@ -75,6 +76,7 @@ const SitesData = () => {
                   siteData?.audits["speed-index"]?.description.split(".")[0] +
                   "."
                 }
+                showMetricsDescription={!hidden}
               />
               <MetricsData
                 metricTested={siteData?.audits["total-blocking-time"]?.title}
@@ -86,6 +88,7 @@ const SitesData = () => {
                     "."
                   )[0] + "."
                 }
+                showMetricsDescription={!hidden}
               />
               <MetricsData
                 metricTested={
@@ -99,6 +102,7 @@ const SitesData = () => {
                     "largest-contentful-paint"
                   ]?.description.split(".")[0] + "."
                 }
+                showMetricsDescription={!hidden}
               />
               <MetricsData
                 metricTested={
@@ -112,6 +116,7 @@ const SitesData = () => {
                     "cumulative-layout-shift"
                   ]?.description.split(".")[0] + "."
                 }
+                showMetricsDescription={!hidden}
               />
             </div>
           )}

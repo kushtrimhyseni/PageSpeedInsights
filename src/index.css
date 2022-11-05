@@ -12,10 +12,10 @@
   top: -7px;
 }
 
-.forsqure {
+.forsquare {
   position: relative;
 }
-.forsqure::before {
+.forsquare::before {
   content: "\25B2";
   color: #ff3e43;
   position: absolute;
