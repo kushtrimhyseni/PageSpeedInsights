@@ -11,7 +11,7 @@ const Input = () => {
 
   const inputHandler = (evt) => {
     if (evt.keyCode === 13) {
-      navigate(`/report?url=${encodeURIComponent(evt.target.value)}`);
+      navigate(`/?url=${encodeURIComponent(evt.target.value)}`);
     }
     setInput(evt.target.value);
   };
@@ -29,7 +29,7 @@ const Input = () => {
           onKeyUp={inputHandler}
           className="border-2 border-[##3c4043] w-full h-12 focus:outline-none"
         />
-        <Link to={`/report?url=${encodeURIComponent(input)}`}>
+        <Link to={`/?url=${encodeURIComponent(input)}`}>
           <button className="text-white bg-[#1a73e8] ml-2 h-12 p-2 w-[100px]">
             Analyze
           </button>

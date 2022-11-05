@@ -15,7 +15,7 @@ function App(props) {
           </main>
         </div>
         <Routes>
-          <Route path="/report" element={<SitesData />}></Route>
+          <Route path="/" element={<SitesData />}></Route>
         </Routes>
       </Router>
     </PageSpeedInsightsContextProvider>
