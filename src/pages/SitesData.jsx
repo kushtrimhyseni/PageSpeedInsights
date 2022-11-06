@@ -24,7 +24,7 @@ const SitesData = () => {
   console.log(siteData.audits);
   if (loading) {
     return (
-      <div class="flex justify-start items-start w-[960px] max-w-screen-md mx-auto mt-4">
+      <div class="flex justify-start items-start w-full lg:w-[960px] max-w-screen-md mx-auto mt-4 border-b border-[#d8d8d8] p-2 lg:p-0">
         <Spinner />
         <div className="flex">
           <img
@@ -40,18 +40,18 @@ const SitesData = () => {
     );
   } else {
     return (
-      <div className="flex flex-col justify-start w-[960px] max-w-screen-md mx-auto mt-4">
+      <div className="flex flex-col justify-start w-full lg:w-[960px] max-w-screen-md mx-auto lg:mt-4 p-2 lg:p-0">
         {siteData.audits && (
           <>
             <div className="mt-8">
-              <h2 className="flex justify-center items-center font-bold mb-4">
+              <h2 className="text-center lg:text-left font-bold mb-4 text-xl lg:text-3xl">
                 Site Diagnosed: {url}
               </h2>
               <div className="flex justify-between items-center border-b border-[#d8d8d8]">
                 <MetricHeader />
                 <ExpandView onClick={() => setHidden(!hidden)} />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 place-items-center lg:place-content-start">
                 <MetricsData
                   metricTested={
                     siteData?.audits["first-contentful-paint"]?.title

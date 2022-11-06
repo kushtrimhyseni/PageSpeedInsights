@@ -10,7 +10,7 @@ function App(props) {
       <Router>
         <div className="flex flex-col">
           <Header />
-          <main className="mt-28 w-[960px] max-w-screen-md mx-auto">
+          <main className="mt-28 w-full lg:w-[960px] max-w-screen-md mx-auto p-2 lg:p-0">
             <Input />
           </main>
         </div>
