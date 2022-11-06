@@ -7,6 +7,7 @@ import MetricsData from "../components/metrics/MetricsData";
 import MetricHeader from "../components/metrics/MetricHeader";
 import ExpandView from "../components/metrics/ExpandView";
 import OverallScore from "../components/metrics/OverallScore";
+import Strategy from "../components/Strategy";
 
 const SitesData = () => {
   const [hidden, setHidden] = useState(true);
@@ -25,7 +26,7 @@ const SitesData = () => {
   console.log(siteData.audits);
   if (loading) {
     return (
-      <div class="flex justify-start items-start w-full lg:w-[960px] max-w-screen-lg mx-auto mt-4 border-b border-[#d8d8d8] p-2 lg:p-0">
+      <div className="flex justify-start items-start w-full lg:w-[960px] max-w-screen-lg mx-auto mt-4 border-b border-[#d8d8d8] p-2 lg:p-0">
         <Spinner />
         <div className="flex">
           <img
@@ -45,6 +46,7 @@ const SitesData = () => {
         {siteData.audits && (
           <>
             <div className="mt-8">
+              <Strategy />
               <h2 className="text-center font-bold mb-4 text-xl lg:text-2xl">
                 Site Diagnosed: {url}
               </h2>

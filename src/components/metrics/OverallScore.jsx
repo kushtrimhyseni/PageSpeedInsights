@@ -1,6 +1,7 @@
 import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import ColoredValues from "./ColoredValues";
 
 const OverallScore = ({ percentage, dataImg }) => {
   return (
@@ -35,6 +36,7 @@ const OverallScore = ({ percentage, dataImg }) => {
             See calculator.
           </a>
         </span>
+        <ColoredValues />
       </div>
       <img
         src={dataImg}
