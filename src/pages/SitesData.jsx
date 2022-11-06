@@ -6,6 +6,7 @@ import iconlab from "../components/assets/icon-lab.svg";
 import MetricsData from "../components/metrics/MetricsData";
 import MetricHeader from "../components/metrics/MetricHeader";
 import ExpandView from "../components/metrics/ExpandView";
+import OverallScore from "../components/metrics/OverallScore";
 
 const SitesData = () => {
   const [hidden, setHidden] = useState(true);
@@ -24,7 +25,7 @@ const SitesData = () => {
   console.log(siteData.audits);
   if (loading) {
     return (
-      <div class="flex justify-start items-start w-full lg:w-[960px] max-w-screen-md mx-auto mt-4 border-b border-[#d8d8d8] p-2 lg:p-0">
+      <div class="flex justify-start items-start w-full lg:w-[960px] max-w-screen-lg mx-auto mt-4 border-b border-[#d8d8d8] p-2 lg:p-0">
         <Spinner />
         <div className="flex">
           <img
@@ -40,13 +41,17 @@ const SitesData = () => {
     );
   } else {
     return (
-      <div className="flex flex-col justify-start w-full lg:w-[960px] max-w-screen-md mx-auto lg:mt-4 p-2 lg:p-0">
+      <div className="flex flex-col justify-start w-full lg:w-[960px] max-w-screen-lg mx-auto lg:mt-4 p-2 lg:p-0">
         {siteData.audits && (
           <>
             <div className="mt-8">
-              <h2 className="text-center lg:text-left font-bold mb-4 text-xl lg:text-3xl">
+              <h2 className="text-center font-bold mb-4 text-xl lg:text-2xl">
                 Site Diagnosed: {url}
               </h2>
+              <OverallScore
+                percentage={siteData.categories.performance.score * 100}
+                dataImg={siteData.audits["final-screenshot"].details.data}
+              />
               <div className="flex justify-between items-center border-b border-[#d8d8d8]">
                 <MetricHeader />
                 <ExpandView onClick={() => setHidden(!hidden)} />

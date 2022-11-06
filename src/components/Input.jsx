@@ -21,7 +21,7 @@ const Input = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-screen-md mx-auto">
+    <div className="flex flex-col max-w-screen-lg mx-auto">
       <div className="flex justify-center items-center">
         <input
           type="text"
