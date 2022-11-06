@@ -14,10 +14,28 @@ const OverallScore = ({ percentage, dataImg }) => {
             styles={buildStyles({
               textSize: "32px",
               pathTransitionDuration: 0.5,
-              pathColor: `rgba(0, 204, 102, ${percentage / 100})`,
-              textColor: "#00cc66",
+              pathColor: `${
+                percentage < 49
+                  ? `rgba(204, 0, 0, ${percentage / 100})`
+                  : percentage > 90
+                  ? `rgba(0, 204, 102, ${percentage / 100})`
+                  : `rgba(255, 170, 51, ${percentage / 100})`
+              }`,
+              textColor: `${
+                percentage < 49
+                  ? "#cc0000"
+                  : percentage > 90
+                  ? "#00cc66"
+                  : "#ffaa33"
+              }`,
               trailColor: "transparent",
-              backgroundColor: "#00cc66",
+              backgroundColor: `${
+                percentage < 49
+                  ? "#cc0000"
+                  : percentage > 90
+                  ? "#00cc66"
+                  : "#ffaa33"
+              }`,
             })}
           />
         </div>
