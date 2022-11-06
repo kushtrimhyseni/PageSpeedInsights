@@ -30,7 +30,7 @@ const Input = () => {
           className="border-2 border-[#f1f1f1] w-full h-12 focus:outline-[#1a73e8] p-2"
         />
         <Link to={`/?url=${encodeURIComponent(input)}`}>
-          <button className="text-white bg-[#1a73e8] ml-2 h-12 p-2 w-[100px]">
+          <button className="text-white bg-[#1a73e8] ml-2 h-12 p-2 w-[100px] cursor-pointer">
             Analyze
           </button>
         </Link>
