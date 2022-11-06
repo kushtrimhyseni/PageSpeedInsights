@@ -27,7 +27,7 @@ const MetricsData = ({
         {displayValue}
       </span>
       {showMetricsDescription && (
-        <span className="text-[#424242] text-base max-w-[375px] ml-[27px] mt-2 mb-2">
+        <span className="text-[#424242] text-base max-w-[375px] ml-[27px] mt-2 mb-2 min-h-[75px]">
           {metricDescription}
         </span>
       )}
