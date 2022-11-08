@@ -8,7 +8,6 @@ const MetricsData = ({
   const classes =
     score < 0.49 ? "triangle" : score > 0.9 ? "square" : "forsquare";
 
-  console.log(score, classes);
   return (
     <div className="flex flex-col max-w-screen-lg mx-auto justify-start items-start mt-8 w-full border-b border-[#d8d8d8]">
       <div className="flex justify-start items-center">
