@@ -2,7 +2,7 @@ import React from "react";
 
 const Treemap = ({ itemsScr }) => {
   return (
-    <div>
+    <div className="mb-2 mr-2">
       <img
         src={itemsScr}
         alt="Screenshot"
