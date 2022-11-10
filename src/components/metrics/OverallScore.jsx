@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ColoredValues from "./ColoredValues";
 
-const OverallScore = ({ percentage, dataImg }) => {
+const OverallScore = ({ percentage, dataImg, deviceFactor }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#f1f1f1] rounded-md p-4 mt-8 mb-8">
       <div className="flex flex-col justify-center items-center lg:border-r lg:border-[#f1f1f1] mb-8 lg:mb-0">
@@ -59,7 +59,9 @@ const OverallScore = ({ percentage, dataImg }) => {
       <img
         src={dataImg}
         alt=""
-        className="w-[155px] h-[268px] mx-auto border-4 border-[#e0e0e0]"
+        className={`${
+          deviceFactor === "mobile" ? "w-[155] h-[268px]" : "w-auto h-[263px]"
+        } mx-auto border-4 border-[#e0e0e0]`}
       />
     </div>
   );

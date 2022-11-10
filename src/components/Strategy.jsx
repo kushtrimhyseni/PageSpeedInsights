@@ -3,13 +3,21 @@ import mobile from "./assets/smartphone.png";
 import mobileActive from "./assets/mobile-active.png";
 import desktop from "./assets/desktop.png";
 import desktopActive from "./assets/desktop-active.png";
+import { useSearchParams } from "react-router-dom";
 
 const Strategy = () => {
   const [active, setActive] = useState("");
 
+  const [search, setSearch] = useSearchParams();
+
   const clickHandler = (evt) => {
     setActive(evt.target.innerHTML);
+    setSearch({
+      url: search.get("url"),
+      formFactor: evt.target.innerHTML?.toLowerCase(),
+    });
   };
+
   return (
     <div className="grid grid-cols-2 gap-8 place-items-center mx-auto w-[240px] max-w-[240px] mb-8">
       <div
@@ -56,7 +64,6 @@ const Strategy = () => {
             active === "Desktop" ? "text-[#1a73e8]" : "text-[#3c403]"
           } font-bold text-sm`}
           onClick={clickHandler}
-          disabled
         >
           Desktop
         </button>

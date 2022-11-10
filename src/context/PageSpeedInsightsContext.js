@@ -6,14 +6,30 @@ const PageSpeedInsightsContext = createContext();
 export const PageSpeedInsightsContextProvider = ({ children }) => {
   const [siteData, setSiteData] = useState({});
   const [loading, setLoading] = useState(false);
+
   const checkPageSpeed = useCallback(async (url) => {
     setLoading(true);
-    const response = await fetch(
-      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=mobile&key=AIzaSyB6vssdE7yXHseGHZxmZ1sySxQB_8MDe9k`
+    const promises = [];
+    promises.push(
+      fetch(
+        `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=mobile&key=AIzaSyB6vssdE7yXHseGHZxmZ1sySxQB_8MDe9k`
+      )
     );
-    const data = await response.json();
-    setLoading(false);
-    setSiteData(data.lighthouseResult);
+    promises.push(
+      fetch(
+        `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&strategy=desktop&key=AIzaSyB6vssdE7yXHseGHZxmZ1sySxQB_8MDe9k`
+      )
+    );
+    const newSiteData = {};
+    Promise.allSettled(promises).then((results) => {
+      results.forEach(async (result) => {
+        const data = await result.value.json();
+        setLoading(false);
+        newSiteData[data.lighthouseResult?.configSettings.formFactor] =
+          data?.lighthouseResult;
+      });
+      setSiteData(newSiteData);
+    });
   }, []);
 
   return (

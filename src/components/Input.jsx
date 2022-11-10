@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PageSpeedInsightsContext from "../context/PageSpeedInsightsContext";
 
 const Input = () => {
@@ -9,9 +9,28 @@ const Input = () => {
   // const clearInput = useRef();
   const navigate = useNavigate();
 
+  const isValidURL = (string) => {
+    let res = string.match(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)/g
+    );
+    return res !== null;
+  };
+
+  const clickHandler = () => {
+    if (isValidURL(input)) {
+      navigate(`/?url=${encodeURIComponent(input)}`);
+    } else {
+      alert("You must enter a valid domain name.");
+    }
+  };
+
   const inputHandler = (evt) => {
     if (evt.keyCode === 13) {
-      navigate(`/?url=${encodeURIComponent(evt.target.value)}`);
+      if (isValidURL(evt.target.value)) {
+        navigate(`/?url=${encodeURIComponent(evt.target.value)}`);
+      } else {
+        alert("You must enter a valid domain name.");
+      }
     }
     setInput(evt.target.value);
   };
@@ -29,11 +48,12 @@ const Input = () => {
           onKeyUp={inputHandler}
           className="border-2 border-[#f1f1f1] w-full h-12 focus:outline-[#1a73e8] p-2"
         />
-        <Link to={`/?url=${encodeURIComponent(input)}`}>
-          <button className="text-white bg-[#1a73e8] ml-2 h-12 p-2 w-[100px] cursor-pointer">
-            Analyze
-          </button>
-        </Link>
+        <button
+          className="text-white bg-[#1a73e8] ml-2 h-12 p-2 w-[100px] cursor-pointer"
+          onClick={clickHandler}
+        >
+          Analyze
+        </button>
         <div
           onClick={clearResults}
           className={`${
