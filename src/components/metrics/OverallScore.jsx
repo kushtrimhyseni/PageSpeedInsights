@@ -5,7 +5,7 @@ import ColoredValues from "./ColoredValues";
 
 const OverallScore = ({ percentage, dataImg, deviceFactor }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 border border-[#f1f1f1] rounded-md p-4 mt-8 mb-8">
+    <div className="grid grid-cols-1 lg:grid-cols-2">
       <div className="flex flex-col justify-center items-center lg:border-r lg:border-[#f1f1f1] mb-8 lg:mb-0">
         <div className="w-[120px] h-[120px]">
           <CircularProgressbar

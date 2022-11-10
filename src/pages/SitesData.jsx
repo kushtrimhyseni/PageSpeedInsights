@@ -54,15 +54,131 @@ const SitesData = () => {
               <h2 className="text-center font-bold mb-4 text-xl lg:text-2xl">
                 Site Diagnosed: {url}
               </h2>
-              <OverallScore
-                percentage={
-                  formFactorSitesData.categories.performance.score * 100
-                }
-                dataImg={
-                  formFactorSitesData.audits["final-screenshot"].details.data
-                }
-                deviceFactor={formFactorSitesData.configSettings.formFactor}
-              />
+              <div className="flex flex-col border border-[#f1f1f1] rounded-md p-4 mt-8 mb-8">
+                <OverallScore
+                  percentage={
+                    formFactorSitesData.categories.performance.score * 100
+                  }
+                  dataImg={
+                    formFactorSitesData.audits["final-screenshot"].details.data
+                  }
+                  deviceFactor={formFactorSitesData.configSettings.formFactor}
+                />
+                <div className="flex justify-between items-center border-b border-[#d8d8d8] mt-8">
+                  <MetricHeader />
+                  <ExpandView onClick={() => setHidden(!hidden)} />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4 place-items-center lg:place-content-start mb-8">
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["first-contentful-paint"]
+                        ?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["first-contentful-paint"]
+                        ?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "first-contentful-paint"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={
+                      formFactorSitesData?.audits["first-contentful-paint"]
+                        ?.score
+                    }
+                    showMetricsDescription={!hidden}
+                  />
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["interactive"]?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["interactive"]?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "interactive"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={formFactorSitesData?.audits["interactive"]?.score}
+                    showMetricsDescription={!hidden}
+                  />
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["speed-index"]?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["speed-index"]?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "speed-index"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={formFactorSitesData?.audits["speed-index"]?.score}
+                    showMetricsDescription={!hidden}
+                  />
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["total-blocking-time"]?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["total-blocking-time"]
+                        ?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "total-blocking-time"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={
+                      formFactorSitesData?.audits["total-blocking-time"]?.score
+                    }
+                    showMetricsDescription={!hidden}
+                  />
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["largest-contentful-paint"]
+                        ?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["largest-contentful-paint"]
+                        ?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "largest-contentful-paint"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={
+                      formFactorSitesData?.audits["total-blocking-time"]?.score
+                    }
+                    showMetricsDescription={!hidden}
+                  />
+                  <MetricsData
+                    metricTested={
+                      formFactorSitesData?.audits["cumulative-layout-shift"]
+                        ?.title
+                    }
+                    displayValue={
+                      formFactorSitesData?.audits["cumulative-layout-shift"]
+                        ?.displayValue
+                    }
+                    metricDescription={
+                      formFactorSitesData?.audits[
+                        "cumulative-layout-shift"
+                      ]?.description.split(".")[0] + "."
+                    }
+                    score={
+                      formFactorSitesData?.audits["cumulative-layout-shift"]
+                        ?.score
+                    }
+                    showMetricsDescription={!hidden}
+                  />
+                </div>
+              </div>
               <TreemapTitle />
               <div className="flex justify-between items-center flex-wrap mb-4 mt-4 p-4 rounded-md border border-[#f1f1f1]">
                 {formFactorSitesData.audits[
@@ -76,118 +192,6 @@ const SitesData = () => {
                     />
                   );
                 })}
-              </div>
-              <div className="flex justify-between items-center border-b border-[#d8d8d8]">
-                <MetricHeader />
-                <ExpandView onClick={() => setHidden(!hidden)} />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 place-items-center lg:place-content-start">
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["first-contentful-paint"]?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["first-contentful-paint"]
-                      ?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "first-contentful-paint"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={
-                    formFactorSitesData?.audits["first-contentful-paint"]?.score
-                  }
-                  showMetricsDescription={!hidden}
-                />
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["interactive"]?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["interactive"]?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "interactive"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={formFactorSitesData?.audits["interactive"]?.score}
-                  showMetricsDescription={!hidden}
-                />
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["speed-index"]?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["speed-index"]?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "speed-index"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={formFactorSitesData?.audits["speed-index"]?.score}
-                  showMetricsDescription={!hidden}
-                />
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["total-blocking-time"]?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["total-blocking-time"]
-                      ?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "total-blocking-time"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={
-                    formFactorSitesData?.audits["total-blocking-time"]?.score
-                  }
-                  showMetricsDescription={!hidden}
-                />
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["largest-contentful-paint"]
-                      ?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["largest-contentful-paint"]
-                      ?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "largest-contentful-paint"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={
-                    formFactorSitesData?.audits["total-blocking-time"]?.score
-                  }
-                  showMetricsDescription={!hidden}
-                />
-                <MetricsData
-                  metricTested={
-                    formFactorSitesData?.audits["cumulative-layout-shift"]
-                      ?.title
-                  }
-                  displayValue={
-                    formFactorSitesData?.audits["cumulative-layout-shift"]
-                      ?.displayValue
-                  }
-                  metricDescription={
-                    formFactorSitesData?.audits[
-                      "cumulative-layout-shift"
-                    ]?.description.split(".")[0] + "."
-                  }
-                  score={
-                    formFactorSitesData?.audits["cumulative-layout-shift"]
-                      ?.score
-                  }
-                  showMetricsDescription={!hidden}
-                />
               </div>
             </div>
           </>

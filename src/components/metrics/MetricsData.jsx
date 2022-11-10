@@ -9,7 +9,7 @@ const MetricsData = ({
     score < 0.49 ? "triangle" : score > 0.9 ? "square" : "forsquare";
 
   return (
-    <div className="flex flex-col max-w-screen-lg mx-auto justify-start items-start mt-8 w-full border-b border-[#d8d8d8]">
+    <div className="flex flex-col max-w-screen-lg mx-auto justify-start items-start mt-4 w-full border-b border-[#d8d8d8]">
       <div className="flex justify-start items-center">
         <span className={`${classes} w-3 h-3`}></span>
         <span className="ml-4 text-[#212121] text-base">{metricTested}</span>
